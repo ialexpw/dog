@@ -23,3 +23,11 @@ CREATE TABLE monitors (
 	public integer,
 	u_id integer
 );
+
+CREATE TABLE external (
+	id integer PRIMARY KEY AUTOINCREMENT,
+	code varchar,
+	loc varchar,
+	addr varchar,
+	active integer
+);
