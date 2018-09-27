@@ -49,9 +49,9 @@
             $db->query('CREATE TABLE monitors (
                 id integer PRIMARY KEY AUTOINCREMENT,
                 name varchar,
-                description varchar,
-                address varchar,
-                location varchar,
+                desc varchar,
+                addr varchar,
+                loc varchar,
                 public integer,
                 u_id integer
                 FOREIGN KEY(u_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
@@ -64,6 +64,46 @@
                 m_id varchar
                 FOREIGN KEY(m_id) REFERENCES monitors(id) ON UPDATE CASCADE ON DELETE CASCADE
             )');
+
+            $db->query('CREATE TABLE external (
+                id integer PRIMARY KEY AUTOINCREMENT,
+                code varchar,
+                loc varchar,
+                addr varchar,
+                active integer
+            )');
+
+            $db->close();
+        }
+
+        /**
+         * Dog::GenerateData()
+         * Generate the default data into the database, including the admin user, a monitor and the externals
+         */
+        public static function GenerateData() {
+            $db = new SQLite3('app/db/viro.db', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
+
+            $db->exec('BEGIN');
+
+            # Generate default password hash
+            $adUser = password_hash("password", PASSWORD_DEFAULT);
+
+            # Admin user
+            $db->query('INSERT INTO users ("username", "password", "active")
+                        VALUES ("admin", "' . $adUser . '", "2")');
+
+            # Example monitor
+            $db->query('INSERT INTO monitors ("name", "desc", "addr", "loc", "public", "u_id")
+                        VALUES ("Example monitor", "Information about this monitor", "picotory.com", "1", "1", "1")');
+
+            # External monitors
+            $db->query('INSERT INTO external ("code", "loc", "addr", "active")
+                        VALUES ("de", "Germany", "ping-de1.telldog.com", "1")');
+
+            $db->query('INSERT INTO external ("code", "loc", "addr", "active")
+                        VALUES ("us", "United States", "ping-us1.telldog.com", "1")');
+
+            $db->exec('COMMIT');
 
             $db->close();
         }
@@ -84,27 +124,44 @@
          * Dog::PingDomain($domain, $ssl)
          * Ping a domain and return the response time in ms
          */
-        public static function PingDomain($domain, $ssl) {
+        public static function PingDomain($domain, $ssl=0) {
             $sTime = microtime(true);
-
+    
             if($ssl) {
                 $fsOpen = @fsockopen($domain, 443, $errNo, $errstr, 2);
             }else{
                 $fsOpen = @fsockopen($domain, 80, $errNo, $errstr, 2);
             }
-
+    
             $eTime = microtime(true);
-
+    
             # Site is down
             if(!$fsOpen) {
                 $status = -1;
             }else{
-                $status = floor(($stoTime - $staTime) * 1000);
+                $status = floor(($eTime - $sTime) * 1000);
             }
-
+    
             @fclose($fsOpen);
-
+    
             return $status;
+        }
+
+        /**
+         * Dog::GetExternalPing($domain, $id)
+         * Get a Ping value from the External monitors, providing the domain and ID of the Ping server
+         */
+        public static function GetExternalPing($domain, $id) {
+            $db = new SQLite3('app/db/dog.db', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
+
+            # Find the external server
+            $getExternal = $db->prepare('SELECT * FROM external WHERE id = :id');
+            $getExternal->bindValue(':id', $id);
+            $getExternalRes = $getExternal->execute();
+
+            $getPing = file_get_contents('http://' . $getExternalRes[0]['addr'] . '/ping.php?domain=' . $domain);
+
+            return $getPing;
         }
 
         /**
