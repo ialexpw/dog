@@ -53,7 +53,7 @@
                 addr varchar,
                 loc varchar,
                 public integer,
-                u_id integer
+                u_id integer,
                 FOREIGN KEY(u_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
             )');
             
@@ -61,7 +61,7 @@
                 id integer PRIMARY KEY AUTOINCREMENT,
                 response varchar,
                 timestamp varchar,
-                m_id varchar
+                m_id varchar,
                 FOREIGN KEY(m_id) REFERENCES monitors(id) ON UPDATE CASCADE ON DELETE CASCADE
             )');
 
@@ -81,7 +81,7 @@
          * Generate the default data into the database, including the admin user, a monitor and the externals
          */
         public static function GenerateData() {
-            $db = new SQLite3('app/db/viro.db', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
+            $db = new SQLite3('app/db/dog.db', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
 
             $db->exec('BEGIN');
 
@@ -174,6 +174,14 @@
             }else{
                 include 'app/tpl/404.php';
             }
+        }
+
+        /**
+         * Dog::LoadPage($page)
+         * Load a page with a header redirect
+         */
+        public static function LoadPage($page) {
+            header("Location: ?page=" . $page);
         }
 
         /**
