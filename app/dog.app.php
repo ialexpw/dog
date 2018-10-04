@@ -73,6 +73,15 @@
                 active integer
             )');
 
+            $db->query('CREATE TABLE auditlog (
+                id integer PRIMARY KEY AUTOINCREMENT,
+                audtype varchar,
+                desc varchar,
+                timestamp varchar,
+                u_id integer,
+                FOREIGN KEY(u_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
+            )');
+
             $db->close();
         }
 
@@ -102,6 +111,9 @@
 
             $db->query('INSERT INTO external ("code", "loc", "addr", "active")
                         VALUES ("us", "United States", "ping-us1.telldog.com", "1")');
+
+            $db->query('INSERT INTO external ("code", "loc", "addr", "active")
+                        VALUES ("fi", "Finland", "ping-fi1.telldog.com", "1")');
 
             $db->exec('COMMIT');
 
@@ -162,6 +174,10 @@
             $getPing = file_get_contents('http://' . $getExternalRes[0]['addr'] . '/ping.php?domain=' . $domain);
 
             return $getPing;
+        }
+
+        public static function AddToAudit($type, $info) {
+            return;
         }
 
         /**
