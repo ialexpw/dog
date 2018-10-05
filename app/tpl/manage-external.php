@@ -15,11 +15,11 @@
     $Connect = Dog::Connect();
 
     # SELECT Monitors
-    $getMonitors = $Connect->prepare('SELECT * FROM monitors WHERE u_id = :u_id');
-    $getMonitors->bindValue(':u_id', $_SESSION['UserID']);
-    $getMonitorsRes = $getMonitors->execute();
+    $getExternal = $Connect->prepare('SELECT * FROM external WHERE u_id = :u_id');
+    $getExternal->bindValue(':u_id', $_SESSION['UserID']);
+    $getExternalRes = $getExternal->execute();
 
-    $getMonitorsRes = $getMonitorsRes->fetchArray(SQLITE3_ASSOC);
+    $getExternalRes = $getExternalRes->fetchArray(SQLITE3_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,7 +158,7 @@
                 </div>
 
                 <?php
-                    print_r($getMonitorsRes);
+                    print_r($getExternalRes);
                 ?>
             </main>
         </div>
