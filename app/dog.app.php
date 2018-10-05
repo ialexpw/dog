@@ -51,6 +51,7 @@
                 name varchar,
                 desc varchar,
                 addr varchar,
+                ipaddr varchar,
                 loc varchar,
                 public integer,
                 u_id integer,
@@ -70,7 +71,9 @@
                 code varchar,
                 loc varchar,
                 addr varchar,
-                active integer
+                active integer,
+                u_id integer,
+                FOREIGN KEY(u_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
             )');
 
             $db->query('CREATE TABLE auditlog (
@@ -102,18 +105,18 @@
                         VALUES ("admin", "' . $adUser . '", "2")');
 
             # Example monitor
-            $db->query('INSERT INTO monitors ("name", "desc", "addr", "loc", "public", "u_id")
-                        VALUES ("Example monitor", "Information about this monitor", "picotory.com", "1", "1", "1")');
+            $db->query('INSERT INTO monitors ("name", "desc", "addr", "ipaddr", "loc", "public", "u_id")
+                        VALUES ("Example monitor", "Information about this monitor", "picotory.com", "127.0.0.1", "1", "1", "1")');
 
             # External monitors
-            $db->query('INSERT INTO external ("code", "loc", "addr", "active")
-                        VALUES ("de", "Germany", "ping-de1.telldog.com", "1")');
+            $db->query('INSERT INTO external ("code", "loc", "addr", "active", "u_id")
+                        VALUES ("de", "Germany", "ping-de1.telldog.com", "1", "1")');
 
-            $db->query('INSERT INTO external ("code", "loc", "addr", "active")
-                        VALUES ("us", "United States", "ping-us1.telldog.com", "1")');
+            $db->query('INSERT INTO external ("code", "loc", "addr", "active", "u_id")
+                        VALUES ("us", "United States", "ping-us1.telldog.com", "1", "1")');
 
-            $db->query('INSERT INTO external ("code", "loc", "addr", "active")
-                        VALUES ("fi", "Finland", "ping-fi1.telldog.com", "1")');
+            $db->query('INSERT INTO external ("code", "loc", "addr", "active", "u_id")
+                        VALUES ("fi", "Finland", "ping-fi1.telldog.com", "1", "1")');
 
             $db->exec('COMMIT');
 
