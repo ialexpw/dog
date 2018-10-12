@@ -17,5 +17,6 @@
     if(!Dog::Installed()) {
         Dog::InstallDatabase();
         Dog::GenerateData();
+        Dog::LoadPage('login');
     }
 ?>
