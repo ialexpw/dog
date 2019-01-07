@@ -14,12 +14,21 @@
     global $l;
     $Connect = Dog::Connect();
 
-    # SELECT Monitors
-    $getMonitors = $Connect->prepare('SELECT * FROM monitors WHERE u_id = :u_id');
-    $getMonitors->bindValue(':u_id', $_SESSION['UserID']);
-    $getMonitorsRes = $getMonitors->execute();
+    # SELECT External servers for the dropdown
+    $getExMonitors = $Connect->prepare('SELECT * FROM external WHERE u_id = :u_id');
+    $getExMonitors->bindValue(':u_id', $_SESSION['UserID']);
+    $getExMonitorsRes = $getExMonitors->execute();
 
-    $getMonitorsRes = $getMonitorsRes->fetchArray(SQLITE3_ASSOC);
+    //$getExMonitorsRes = $getExMonitorsRes->fetchArray(SQLITE3_ASSOC);
+    
+    if(isset($_GET['add']) && !empty($_POST['sname']) && !empty($_POST['saddress'])) {
+        # Check domain
+        //if(filter_var($_POST['saddress'], FILTER_VALIDATE_URL)) {
+        //    die('correct');
+        //}else{
+        //    die('nooo');
+        //}
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +59,6 @@
 <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">tell<b>Dog</b></a>
-        <!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link" href="?logout">Sign out</a>
@@ -147,18 +155,55 @@
 
                 <hr>
 
-                <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-                </div>
-                </div>
+                <form action="?page=add-server&add" method="post">
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="sname">Give your server a name</label>
+                            <input type="text" class="form-control" id="sname" name="sname" placeholder="Dave">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="saddress">What's the server address?</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">http(s)://</div>
+                                </div>
+                                <input type="text" class="form-control" id="saddress" name="saddress" placeholder="example.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <label for="sexternal">Where would you like the server to be monitored from?</label>
+                            <select class="form-control" id="sexternal" name="sexternal">
+                                <option value="0">Local</option>
+                                <?php
+                                    while($aExternal = $getExMonitorsRes->fetchArray(SQLITE3_ASSOC)) {
+                                        echo '<option value="' . $aExternal['id'] . '">' . $aExternal['loc'] . '</option>';
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
 
                 <?php
-                    print_r($getMonitorsRes);
+                    //print_r($getExMonitorsRes);
+                    
+                    if(isset($_GET['add']) && !empty($_POST)) {
+                        echo '<pre>';
+                        print_r($_POST);
+                        echo '</pre>';
+                    }
                 ?>
             </main>
         </div>

@@ -13,6 +13,7 @@
 
     include 'app/dog.app.php';
 
+    # Run from the CLI
     if(php_sapi_name() == "cli") {
         
     }

@@ -147,15 +147,25 @@
 
                 <hr>
 
-                <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-                </div>
-                </div>
+                <form action="?page=login" method="post">
+                    <div class="form-group row">
+                        <label for="username" class="col-sm-1 col-form-label">Username</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="username" name="username" aria-describedby="UserHelp" placeholder="Enter username">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-1 col-form-label">Password</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
 
                 <?php
                     print_r($getMonitorsRes);

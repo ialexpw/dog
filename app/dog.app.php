@@ -106,7 +106,7 @@
 
             # Example monitor
             $db->query('INSERT INTO monitors ("name", "desc", "addr", "ipaddr", "loc", "public", "u_id")
-                        VALUES ("Example monitor", "Information about this monitor", "picotory.com", "127.0.0.1", "1", "1", "1")');
+                        VALUES ("Example monitor", "Information about this monitor", "google.co.uk", "' . gethostbyname('google.co.uk') . '", "1", "1", "1")');
 
             # External monitors
             $db->query('INSERT INTO external ("code", "loc", "addr", "active", "u_id")
@@ -180,6 +180,7 @@
         }
 
         public static function AddToAudit($type, $info) {
+            # Switch type
             return;
         }
 
@@ -200,7 +201,7 @@
          * Load a page with a header redirect
          */
         public static function LoadPage($page) {
-            header("Location: ?page=" . $page);
+            header("Location: index.php?page=" . $page);
         }
 
         /**

@@ -10,7 +10,11 @@
      * @license    https://github.com/ialexpw/dog/blob/master/LICENSE  MIT License
      * @link       https://viro.app
      */
-    
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
     include 'app/dog.app.php';
 
     # If not installed
