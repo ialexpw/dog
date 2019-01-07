@@ -14,5 +14,7 @@
     /**
      * Translations
      */
-    $l = array();
+    $l = array(
+        'dashboard' => 'Dashboard',
+    );
 ?>

@@ -143,17 +143,16 @@
                     <h1 class="h2">Dashboard</h1>
                 </div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dictum quam quam, at accumsan velit lobortis sit amet. Praesent accumsan et lorem euismod elementum. Sed elementum augue at tempus feugiat. Aenean in mattis elit, a feugiat mauris. In in ultrices lorem. Nam nisl tortor, blandit sit amet enim vehicula, scelerisque hendrerit nisl. Etiam velit diam, rhoncus sit amet ligula sed, ultricies viverra elit. Sed tellus dui, pharetra ac tristique ut, mollis vitae ex. Vestibulum accumsan vel orci in dapibus.</p>
+                <p>Welcome to your Dashboard!</p>
 
                 <hr>
 
                 <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <h5 class="card-title" align="center">Monitors</h5>
+                <p class="card-text" style="font-size:45px;">5</p>
+                <!--<a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>-->
                 </div>
                 </div>
 
