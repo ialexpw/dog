@@ -148,12 +148,12 @@
                 <hr>
 
                 <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                <h5 class="card-title" align="center">Monitors</h5>
-                <p class="card-text" style="font-size:45px;">5</p>
-                <!--<a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>-->
-                </div>
+                    <div class="card-body">
+                        <h5 class="card-title" align="center">Monitors</h5>
+                        <p class="card-text" style="font-size:45px;" align="center">5</p>
+                        <!--<a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>-->
+                    </div>
                 </div>
 
                 <?php
