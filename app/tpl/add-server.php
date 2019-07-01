@@ -6,7 +6,7 @@
      *
      * @package    tellDog
      * @author     Alex White (https://github.com/ialexpw)
-     * @copyright  2018 tellDog
+     * @copyright  2019 tellDog
      * @license    https://github.com/ialexpw/dog/blob/master/LICENSE  MIT License
      * @link       https://viro.app
      */
@@ -20,7 +20,7 @@
     $getExMonitorsRes = $getExMonitors->execute();
 
     //$getExMonitorsRes = $getExMonitorsRes->fetchArray(SQLITE3_ASSOC);
-    
+
     if(isset($_GET['add']) && !empty($_POST['sname']) && !empty($_POST['saddress'])) {
         # Check domain
         //if(filter_var($_POST['saddress'], FILTER_VALIDATE_URL)) {
@@ -198,7 +198,7 @@
 
                 <?php
                     //print_r($getExMonitorsRes);
-                    
+
                     if(isset($_GET['add']) && !empty($_POST)) {
                         echo '<pre>';
                         print_r($_POST);

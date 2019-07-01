@@ -6,7 +6,7 @@
      *
      * @package    tellDog
      * @author     Alex White (https://github.com/ialexpw)
-     * @copyright  2018 tellDog
+     * @copyright  2019 tellDog
      * @license    https://github.com/ialexpw/dog/blob/master/LICENSE  MIT License
      * @link       https://viro.app
      */
@@ -21,6 +21,6 @@
     if(!Dog::Installed()) {
         Dog::InstallDatabase();
         Dog::GenerateData();
-        Dog::LoadPage('login');
+        Dog::LoadPage('login?installed');
     }
 ?>

@@ -6,7 +6,7 @@
      *
      * @package    tellDog
      * @author     Alex White (https://github.com/ialexpw)
-     * @copyright  2018 tellDog
+     * @copyright  2019 tellDog
      * @license    https://github.com/ialexpw/dog/blob/master/LICENSE  MIT License
      * @link       https://viro.app
      */
@@ -45,7 +45,7 @@
                 nti_phone varchar,
                 active integer
             )');
-            
+
             $db->query('CREATE TABLE monitors (
                 id integer PRIMARY KEY AUTOINCREMENT,
                 name varchar,
@@ -57,7 +57,7 @@
                 u_id integer,
                 FOREIGN KEY(u_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
             )');
-            
+
             $db->query('CREATE TABLE records (
                 id integer PRIMARY KEY AUTOINCREMENT,
                 response varchar,
@@ -141,24 +141,24 @@
          */
         public static function PingDomain($domain, $ssl=0) {
             $sTime = microtime(true);
-    
+
             if($ssl) {
                 $fsOpen = @fsockopen($domain, 443, $errNo, $errstr, 2);
             }else{
                 $fsOpen = @fsockopen($domain, 80, $errNo, $errstr, 2);
             }
-    
+
             $eTime = microtime(true);
-    
+
             # Site is down
             if(!$fsOpen) {
                 $status = -1;
             }else{
                 $status = floor(($eTime - $sTime) * 1000);
             }
-    
+
             @fclose($fsOpen);
-    
+
             return $status;
         }
 

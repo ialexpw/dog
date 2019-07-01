@@ -1,4 +1,16 @@
 <?php
+    /**
+     * ping.php
+     *
+     * The ping functions
+     *
+     * @package    tellDog
+     * @author     Alex White (https://github.com/ialexpw)
+     * @copyright  2019 tellDog
+     * @license    https://github.com/ialexpw/dog/blob/master/LICENSE  MIT License
+     * @link       https://viro.app
+     */
+
     # Ping domain
     if(isset($_GET['domain']) && !empty($_GET['domain'])) {
         # SSL?
@@ -13,18 +25,17 @@
     }
 
     /**
-     * Dog::PingDomain($domain, $ssl)
+     * Dog::PingDomain($domain, $port)
      * Ping a domain and return the response time in ms
      */
-    function PingDomain($domain, $ssl=0) {
+    function PingDomain($domain, $port) {
+        # Start timer
         $sTime = microtime(true);
 
-        if($ssl) {
-            $fsOpen = @fsockopen($domain, 443, $errNo, $errstr, 2);
-        }else{
-            $fsOpen = @fsockopen($domain, 80, $errNo, $errstr, 2);
-        }
+        # Ping a chosen port
+        $fsOpen = @fsockopen($domain, $port, $errNo, $errstr, 2);
 
+        # Stop timer
         $eTime = microtime(true);
 
         # Site is down
