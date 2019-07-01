@@ -139,28 +139,27 @@
          * Dog::PingDomain($domain, $ssl)
          * Ping a domain and return the response time in ms
          */
-        public static function PingDomain($domain, $ssl=0) {
-            $sTime = microtime(true);
+         function PingDomain($domain, $port) {
+             # Start timer
+             $sTime = microtime(true);
 
-            if($ssl) {
-                $fsOpen = @fsockopen($domain, 443, $errNo, $errstr, 2);
-            }else{
-                $fsOpen = @fsockopen($domain, 80, $errNo, $errstr, 2);
-            }
+             # Ping a chosen port
+             $fsOpen = @fsockopen($domain, $port, $errNo, $errstr, 2);
 
-            $eTime = microtime(true);
+             # Stop timer
+             $eTime = microtime(true);
 
-            # Site is down
-            if(!$fsOpen) {
-                $status = -1;
-            }else{
-                $status = floor(($eTime - $sTime) * 1000);
-            }
+             # Site is down
+             if(!$fsOpen) {
+                 $status = -1;
+             }else{
+                 $status = floor(($eTime - $sTime) * 1000);
+             }
 
-            @fclose($fsOpen);
+             @fclose($fsOpen);
 
-            return $status;
-        }
+             return $status;
+         }
 
         /**
          * Dog::GetExternalPing($domain, $id)
