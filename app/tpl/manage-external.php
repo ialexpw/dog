@@ -160,14 +160,11 @@
                         echo '<div class="card-body">';
                         echo '<h5 class="card-title">' . $ExMon['loc'] . ' (' . strtoupper($ExMon['code']) . ')</h5>';
                         echo '<h6 class="card-subtitle mb-2 text-muted">' . $ExMon['addr'] . '</h6>';
-                        echo '<a href="#" class="card-link">Card link</a>';
-                        echo '<a href="#" class="card-link">Another link</a>';
+                        echo '<a href="#" class="card-link" style="color:red;">Delete</a>';
+                        echo '<span style="float:right;">Status: OK</span>';
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
-                        //echo '<pre>';
-                        //print_r($ExMon);
-                        //echo '</pre>';
                     }
 
                     echo '</div>';
