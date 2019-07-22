@@ -155,7 +155,7 @@
                     echo '<div class="row">';
 
                     while($ExMon = $getExternalRes->fetchArray(SQLITE3_ASSOC)) {
-                        echo '<div class="col-md-4'>
+                        echo '<div class="col-md-4">';
                         echo '<div class="card" style="width: 18rem;">';
                         echo '<div class="card-body">';
                         echo '<h5 class="card-title">' . $ExMon['loc'] . '</h5>';
