@@ -157,6 +157,13 @@
 
                     <div class="form-group row">
                         <div class="col-sm-6">
+                            <label for="sname">What is the <a target="_blank" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">country code</a>?</label>
+                            <input type="text" class="form-control" id="sname" name="sname" placeholder="FR">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6">
                             <label for="saddress">What's the server address?</label>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
