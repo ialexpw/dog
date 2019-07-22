@@ -145,8 +145,7 @@
 
                 <hr>
 
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
+
                         <!--
                         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -154,17 +153,19 @@
                         <a href="#" class="card-link">Another link</a>-->
                         <?php
                             while($ExMon = $getExternalRes->fetchArray(SQLITE3_ASSOC)) {
+                                echo '<div class="card" style="width: 18rem;">';
+                                echo '<div class="card-body">';
                                 echo '<h5 class="card-title">' . $ExMon['loc'] . '</h5>';
                                 echo '<a href="#" class="card-link">Card link</a>';
                                 echo '<a href="#" class="card-link">Another link</a>';
-
+                                echo '</div>';
+                                echo '</div>';
                                 //echo '<pre>';
                                 //print_r($ExMon);
                                 //echo '</pre>';
                             }
                         ?>
-                    </div>
-                </div>
+
 
 
             </main>
