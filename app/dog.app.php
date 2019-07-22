@@ -178,8 +178,25 @@
             return $getPing;
         }
 
+        /**
+         * Dog::AddToAudit($type, $info)
+         * Add messages to the Audit Log on common changes to the system
+         */
         public static function AddToAudit($type, $info) {
             # Switch type
+            switch ($type) {
+                case "a":
+                    echo "";
+                    break;
+                case "b":
+                    echo "";
+                    break;
+                case "c":
+                    echo "";
+                    break;
+                default:
+                    echo "";
+            }
             return;
         }
 

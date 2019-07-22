@@ -15,6 +15,7 @@
      * Translations
      */
     $l = array(
-        'dashboard' => 'Dashboard',
+        'dashboard' =>  'Dashboard',
+        'AddSrv'    =>  'Add Server',
     );
 ?>
