@@ -19,7 +19,7 @@
     $getMonitors->bindValue(':u_id', $_SESSION['UserID']);
     $getExMonitorsRes = $getMonitors->execute();
 
-    $getExMonitorsRes = $getExMonitorsRes->fetchArray(SQLITE3_ASSOC);
+    //$getExMonitorsRes = $getExMonitorsRes->fetchArray(SQLITE3_ASSOC);
 
     foreach($getExMonitorsRes as $res) {
         echo 'a';
