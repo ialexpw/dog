@@ -20,6 +20,10 @@
     $getExMonitorsRes = $getMonitors->execute();
 
     $getExMonitorsRes = $getExMonitorsRes->fetchArray(SQLITE3_ASSOC);
+
+    foreach($getExMonitorsRes as $res) {
+        echo 'a';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
