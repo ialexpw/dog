@@ -20,10 +20,6 @@
     $getExMonitorsRes = $getMonitors->execute();
 
     //$getExMonitorsRes = $getExMonitorsRes->fetchArray(SQLITE3_ASSOC);
-
-    foreach($getExMonitorsRes as $res) {
-        echo 'a';
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -179,7 +175,11 @@
                 </form>
 
                 <?php
-                    print_r($getExMonitorsRes);
+                    while($ExMon = $getExMonitorsRes->fetchArray(SQLITE3_ASSOC)) {
+                        echo '<pre>';
+                        print_r($ExMon);
+                        echo '</pre>';
+                    }
                 ?>
             </main>
         </div>
