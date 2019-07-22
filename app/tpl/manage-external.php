@@ -159,7 +159,7 @@
                         echo '<div class="card" style="width: 18rem;">';
                         echo '<div class="card-body">';
                         echo '<h5 class="card-title">' . $ExMon['loc'] . ' (' . strtoupper($ExMon['code']) . ')</h5>';
-                        echo '<h6 class="card-subtitle mb-2 text-muted">' . $ExMon['addr'] . '</h6>';
+                        echo '<h6 class="card-subtitle mb-2 text-muted">' . $ExMon['addr'] . '</h6><br />';
                         echo '<a href="#" class="card-link" style="color:red;">Delete</a>';
                         echo '<span style="float:right;">Status: OK</span>';
                         echo '</div>';
