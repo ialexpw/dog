@@ -18,8 +18,6 @@
     $getExternal = $Connect->prepare('SELECT * FROM external WHERE u_id = :u_id');
     $getExternal->bindValue(':u_id', $_SESSION['UserID']);
     $getExternalRes = $getExternal->execute();
-
-    $getExternalRes = $getExternalRes->fetchArray(SQLITE3_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,7 +156,11 @@
                 </div>
 
                 <?php
-                    print_r($getExternalRes);
+                    while($ExMon = $getExternalRes->fetchArray(SQLITE3_ASSOC)) {
+                        echo '<pre>';
+                        print_r($ExMon);
+                        echo '</pre>';
+                    }
                 ?>
             </main>
         </div>
