@@ -47,7 +47,11 @@
             $_SESSION['Username'] = $getUserRes['username'];
 
             # Redirect
-            Dog::LoadPage('dashboard');
+            if(!empty($_GET['page'])) {
+                Dog::LoadPage($_GET['page']);
+            }else{
+                Dog::LoadPage('dashboard');
+            }
         }else{
             Dog::LoadPage('login&error');
         }
