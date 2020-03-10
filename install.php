@@ -21,6 +21,6 @@
     if(!Dog::Installed()) {
         Dog::InstallDatabase();
         Dog::GenerateData();
-        Dog::LoadPage('login?installed');
+        Dog::LoadPage('login&installed');
     }
 ?>
