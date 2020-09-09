@@ -19,9 +19,9 @@
     $getMonitors->bindValue(':u_id', $_SESSION['UserID']);
     $getMonitorsRes = $getMonitors->execute();
 
-    //$getMonitorsRes = $getMonitorsRes->fetchArray(SQLITE3_ASSOC);
+    $getMonitorsRes = $getMonitorsRes->fetchArray(SQLITE3_ASSOC);
     //$getUsrFile = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $getMonitorsRes = $getMonitorsRes->fetchAll(SQLITE_ASSOC);
+    //$getMonitorsRes = $getMonitorsRes->fetchAll(SQLITE3_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
