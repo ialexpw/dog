@@ -22,6 +22,9 @@
     //$getExMonitorsRes = $getExMonitorsRes->fetchArray(SQLITE3_ASSOC);
 
     if(isset($_GET['add']) && !empty($_POST['sname']) && !empty($_POST['saddress'])) {
+        echo '<pre>';
+        print_r($_POST);
+        echo '</pre>';
         # Check domain
         //if(filter_var($_POST['saddress'], FILTER_VALIDATE_URL)) {
         //    die('correct');
