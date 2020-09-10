@@ -19,7 +19,7 @@
     $getMonitors->bindValue(':u_id', $_SESSION['UserID']);
     $getMonitorsRes = $getMonitors->execute();
 
-    while ($row = $getMonitorsRes->fetchArray()) {
+    while ($row = $getMonitorsRes->fetchArray(SQLITE3_ASSOC)) {
         print_r($row);
     }
 
