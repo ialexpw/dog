@@ -19,8 +19,9 @@
     $getMonitors->bindValue(':u_id', $_SESSION['UserID']);
     $getMonitorsRes = $getMonitors->execute();
 
-    while ($row = $getMonitorsRes->fetchArray(SQLITE3_ASSOC)) {
-        print_r($row);
+    while ($mtr = $getMonitorsRes->fetchArray(SQLITE3_ASSOC)) {
+        $countMtr = count($mtr);
+        print_r($mtr);
     }
 
     //$getMonitorsRes = $getMonitorsRes->fetchArray(SQLITE3_ASSOC);
@@ -156,14 +157,14 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title" align="center">Monitors</h5>
-                        <p class="card-text" style="font-size:45px;" align="center"><?php //echo count($getMonitorsRes); ?></p>
+                        <p class="card-text" style="font-size:45px;" align="center"><?php echo $countMtr; ?></p>
                         <!--<a href="#" class="card-link">Card link</a>
                         <a href="#" class="card-link">Another link</a>-->
                     </div>
                 </div>
 
                 <?php
-                    print_r($getMonitorsRes);
+                    //print_r($getMonitorsRes);
                 ?>
             </main>
         </div>
