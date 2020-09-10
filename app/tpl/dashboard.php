@@ -6,9 +6,9 @@
      *
      * @package    tellDog
      * @author     Alex White (https://github.com/ialexpw)
-     * @copyright  2019 tellDog
+     * @copyright  2020 tellDog
      * @license    https://github.com/ialexpw/dog/blob/master/LICENSE  MIT License
-     * @link       https://viro.app
+     * @link       https://picotory.com
      */
 
     global $l;
@@ -19,7 +19,11 @@
     $getMonitors->bindValue(':u_id', $_SESSION['UserID']);
     $getMonitorsRes = $getMonitors->execute();
 
-    $getMonitorsRes = $getMonitorsRes->fetchArray(SQLITE3_ASSOC);
+    while ($row = $getMonitorsRes->fetchArray(SQLITE3_ASSOC)) {
+        print_r($row);
+    }
+
+    //$getMonitorsRes = $getMonitorsRes->fetchArray(SQLITE3_ASSOC);
     //$getUsrFile = $stmt->fetchAll(PDO::FETCH_ASSOC);
     //$getMonitorsRes = $getMonitorsRes->fetchAll(SQLITE3_ASSOC);
 ?>
